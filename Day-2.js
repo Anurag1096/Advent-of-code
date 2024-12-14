@@ -70,3 +70,21 @@ function unsafeToSafe(arr){
     return unsafe_to_safe
 }
 
+
+Array.prototype.myAt = function (index) {
+    // Input -- An integer value
+    // Output -- Item at that index
+    // Edge case allowing for positive an negetive integer
+    // if negetive integer received count backwards
+    // First handeling undefined
+    if(index < -this.length || index >= this.length){
+        return undefined;
+    }
+    // if the index is a negetive integer
+    if(index < 0){
+        index=index + this.length
+    }
+    return this[index]
+
+};
+
