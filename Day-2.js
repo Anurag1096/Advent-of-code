@@ -88,3 +88,21 @@ Array.prototype.myAt = function (index) {
 
 };
 
+export default function get(objectParam, pathParam, defaultValue) {
+    // we have an object -->objectParam
+    // we have a path of an object --> pathParam
+    // we need to resolve its value
+    // if value is not there we return default value
+    let pathArr= Array.isArray(pathParam)?pathParam:pathParam.split(".")
+    // Traverse the object safely
+    const result = pathArr.reduce((acc, key) => {
+        if (acc && typeof acc === "object") {
+            return acc[key];
+        }
+        return undefined;
+    }, objectParam);
+
+    // Return result as is if it's null, otherwise defaultValue if undefined
+    return result === undefined ? defaultValue : result;
+}
+
