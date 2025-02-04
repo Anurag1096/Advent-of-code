@@ -1,0 +1,31 @@
+// still to be completed
+export default function textSearch(text, queries) {
+  // we convert the text into small case
+  let textLow = text.toLowerCase();
+  //we have a pattern and queries to match it with.
+  //lets loop over it
+  let pos = [];
+  for (let k = 0; k < queries.length; k++) {
+    // This loop is for queries.
+    let textLength = textLow.length;
+    let searchQuery = queries[k].length;
+
+    //we are adding a loop for every query term.
+    for (let i = 0; i <= textLength - searchQuery; i++) {
+      //we do this so we dont go out of index
+      //now lets initilise the second pointer
+      let j = 0;
+      //we searching if it has a match for the whole sting.
+      while (j < searchQuery && textLow[i + j] === queries[k][j]) {
+        j++;
+      }
+      // if the
+      if (j === searchQuery) {
+        pos.push(i);
+      }
+    }
+  }
+  //After getting the match pos 
+  if (!pos.length) return text;
+  
+}
